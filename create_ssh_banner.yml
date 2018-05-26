@@ -6,6 +6,7 @@
   - name: Create a Banner File under /etc
     lineinfile:
      path: /etc/banner
+     state: present
      line: "This is a Test system"
      insertafter: EOF
 
