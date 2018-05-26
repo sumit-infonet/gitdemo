@@ -1,0 +1,22 @@
+---
+- name: Create SSH Banner 
+  hosts: all
+
+  tasks: 
+  - name: Create a Banner File under /etc
+    lineinfile:
+     path: /etc/banner
+     line: "This is a Test system"
+     insertafter: EOF
+
+  - name: Update sshd.conf to print a banner while ssh login
+    lineinfile:
+     path: /etc/ssh/sshd_config 
+     insertafter: "^#Banner none"
+     state: present
+
+  - name: restart the sshd service to take effect
+    service:
+     name: sshd
+     state: restarted
+...
