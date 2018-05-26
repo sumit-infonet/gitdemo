@@ -3,11 +3,15 @@
   hosts: all
 
   tasks: 
+  - name: Create a blank Banner file if not exists
+    file:
+     path: /etc/banner
+     state: touch
+     mode: 644
+
   - name: Create a Banner File under /etc
     lineinfile:
      path: /etc/banner
-     state: present
-     crate: yes
      line: "This is a Test system"
      insertafter: EOF
 
