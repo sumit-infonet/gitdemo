@@ -12,7 +12,7 @@
   - name: Create a Banner File under /etc
     lineinfile:
      path: /etc/banner
-     line: "This is a Test system"
+     line: "This is a Test system for Shampa"
      insertafter: EOF
 
   - name: Update sshd.conf to print a banner while ssh login
