@@ -2,7 +2,7 @@
 - name: Create SSH Banner 
   hosts: all
   vars:
-   my_hostname: "{{hostname}}"
+   my_hostname: "{{hostname_t}}"
    my_ipaddr: "{{ip_addr}}"
 
   tasks: 
