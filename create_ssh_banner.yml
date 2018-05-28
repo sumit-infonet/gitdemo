@@ -1,8 +1,12 @@
 ---
 - name: Create SSH Banner 
   hosts: all
+  vars:
+   my_hostname: "{{hostname}}"
+   my_ipaddr: "{{ip_addr}}"
 
   tasks: 
+
   - name: Create a blank Banner file if not exists
     file:
      path: /etc/banner
@@ -26,4 +30,11 @@
     service:
      name: sshd
      state: restarted
+  
+  - name: Create a hosts file entry with veriable
+    lineinfile:
+     path: /etc/hosts
+     insertafter: EOF
+     line: "{{my_hostname}} {{my_ipaddr}}"
+
 ...
